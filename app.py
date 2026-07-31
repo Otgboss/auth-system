@@ -3,6 +3,7 @@ import hashlib
 import os
 import sqlite3
 
+#this is a test feature branch
 app = Flask(__name__)
 app.secret_key = "your_secret_key_here"
 @app.route("/register", methods=["GET", "POST"])

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import hashlib
 import os
 import sqlite3
@@ -31,6 +31,12 @@ def login():
 @app.route("/home")
 def home():
     return render_template("home.html")
+
+@app.route("/logout")
+def logout():
+    flash("You have been logged out.")
+    session.clear()
+    return redirect(url_for("login"))
 conn = sqlite3.connect("users.db", check_same_thread=False)
 cursor = conn.cursor()
 

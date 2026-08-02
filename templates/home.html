@@ -5,6 +5,9 @@
 </head>
 <body>
     <h1>Welcome, {{ username }}!</h1>
+    {% for message in get_flashed_messages()%}
+        <p style="color: red">{{ message }}</p>
+    {% endfor %}
     <a href="/logout">Logout</a>
 </body>
 </html>

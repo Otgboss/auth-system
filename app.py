@@ -33,7 +33,7 @@ def login():
 def home():
     if "username" not in session:
         return redirect(url_for("login"))
-    return render_template("home.html")
+    return render_template("home.html", username=session["username"])
 
 @app.route("/logout")
 def logout():

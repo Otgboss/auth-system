@@ -25,11 +25,14 @@ def login():
         success, message = authenticate_user(username, password)
         flash(message)
         if success:
+            session["username"] = username
             return redirect(url_for("home"))
     return render_template("login.html")
 
 @app.route("/home")
 def home():
+    if "username" not in session:
+        return redirect(url_for("login"))
     return render_template("home.html")
 
 @app.route("/logout")
